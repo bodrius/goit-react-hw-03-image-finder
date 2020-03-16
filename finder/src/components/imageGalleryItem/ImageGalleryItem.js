@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ImageGalleryItem = ({ everyItem,onOpen }) => {
+const ImageGalleryItem = ({ everyItem, onOpen }) => {
   return (
     <>
       <li className="ImageGalleryItem">

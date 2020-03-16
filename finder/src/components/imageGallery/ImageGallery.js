@@ -1,7 +1,7 @@
 import React from "react";
 import ImageGalleryItem from "../imageGalleryItem/ImageGalleryItem";
 
-const ImageGallery = ({ galeryItem, largeImageURL,onOpen }) => {
+const ImageGallery = ({ galeryItem, largeImageURL, onOpen }) => {
   return (
     <ul className="ImageGallery">
       {galeryItem.map(item => (

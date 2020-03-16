@@ -17,7 +17,7 @@ class App extends Component {
     galeryItem: [],
     isLoading: false,
     error: null,
-    largeImageURL:null,
+    largeImageURL: null,
     openModal: false
   };
 
@@ -46,7 +46,6 @@ class App extends Component {
     await axios
       .get(BASE_URL)
       .then(({ data }) => {
-        
         this.setState(prevState => ({
           galeryItem: [...prevState.galeryItem, ...data.hits]
         }));
@@ -77,12 +76,18 @@ class App extends Component {
     this.toggleModal();
   };
 
-toggleModal = () => {
-  this.setState(state => ({ openModal: !state.openModal }));
-};
+  toggleModal = () => {
+    this.setState(state => ({ openModal: !state.openModal }));
+  };
 
   render() {
-    const { galeryItem, searchQuery, isLoading, error,largeImageUrl } = this.state;
+    const {
+      galeryItem,
+      searchQuery,
+      isLoading,
+      error,
+      largeImageUrl
+    } = this.state;
     return (
       <>
         <div className="App">
@@ -92,15 +97,17 @@ toggleModal = () => {
           />
           {error && <ErrorNotify error={error.message} />}
           {isLoading && <Loadered />}
-          {galeryItem.length > 0 && <ImageGallery galeryItem={galeryItem} onOpen={this.setLargeImage}/>}
+          {galeryItem.length > 0 && (
+            <ImageGallery galeryItem={galeryItem} onOpen={this.setLargeImage} />
+          )}
           {galeryItem.length > 0 ? (
             <Button uploadMoreImg={this.uploadMoreImg} />
           ) : (
             <ErrorNotify />
           )}
           {this.state.openModal && (
-          <Modal url={largeImageUrl} onClose={this.toggleModal} />
-        )}
+            <Modal url={largeImageUrl} onClose={this.toggleModal} />
+          )}
         </div>
       </>
     );
